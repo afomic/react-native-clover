@@ -27,7 +27,7 @@ public class CloverModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getAuthToken(ReadableMap options, final Promise promise){
+    public void getAuthToken(final Promise promise){
         this.promise=promise;
         new CloverAuthTask().execute();
     }
