@@ -126,8 +126,11 @@ public class CloverModule extends ReactContextBaseJavaModule {
     public class CloverDeviceTask extends AsyncTask<Void,Void, String>{
         @Override
         protected String doInBackground(Void... voids) {
+            if(account==null)return null;
+            connect();
             String deviceId=null;
             try {
+
                 deviceId=merchantConnector.getMerchant().getDeviceId();
             }catch (Exception e){
                 promise.reject(e);
