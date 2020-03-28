@@ -130,7 +130,6 @@ public class CloverModule extends ReactContextBaseJavaModule {
             connect();
             String deviceId=null;
             try {
-
                 deviceId=merchantConnector.getMerchant().getDeviceId();
             }catch (Exception e){
                 promise.reject(e);
