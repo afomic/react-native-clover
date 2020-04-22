@@ -29,7 +29,6 @@ public class CloverModule extends ReactContextBaseJavaModule {
     public CloverModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        account = CloverAccount.getAccount(reactContext);
     }
 
     @Override
@@ -40,16 +39,19 @@ public class CloverModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getAuthToken(final Promise promise){
         this.promise=promise;
+        account = CloverAccount.getAccount(reactContext);
         new CloverAuthTask().execute();
     }
     @ReactMethod
     public void getMerchant(final Promise promise){
         this.promise=promise;
+        account = CloverAccount.getAccount(reactContext);
         new CloverMerchantTask().execute();
     }
     @ReactMethod
     public void getDeviceId(final Promise promise){
         this.promise=promise;
+        account = CloverAccount.getAccount(reactContext);
         new CloverDeviceTask().execute();
     }
     private class CloverAuthTask extends AsyncTask<Void, Void,  CloverAuth.AuthResult> {
